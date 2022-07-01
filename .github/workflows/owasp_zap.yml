@@ -1,0 +1,16 @@
+# This is a basic workflow to help you get started with Actions
+
+name: OWASP ZAP Scan
+on: [push]
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.4.0
+        with:
+          docker_name: 'owasp/zap2docker-stable'
+          target: 'https://www.zaproxy.org/'
+          cmd_options: '-a'
